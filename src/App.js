@@ -1,23 +1,36 @@
 import logo from './logo.svg';
 import './App.css';
+//import our saucy react stuff
+import React, { useState, useEffect } from 'react'
+//imports our components
+import MoleContainer from './components/MoleContainer';
 
 function App() {
+  //defines score for the game
+  let [score, setScore] = useState(0)
+
+  //creates an anonymous function to create an array of molehills
+  const createMoleHills = () => {
+    //create empty array to hold components
+    let hills = []
+
+    for (let i = 0; i < 9; i++) {
+      hills.push(
+        <MoleContainer setScore={setScore} score={score} />
+      )
+    }
+    return (
+      <div id="allHills">
+        {hills}
+      </div>
+    )
+  }
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <h1>React-A-Mole!</h1>
+      {score}
+      {createMoleHills()}
     </div>
   );
 }
