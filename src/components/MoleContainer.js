@@ -18,7 +18,7 @@ function MoleContainer(props) {
 
     return (
         <div>
-            {displayMole ? <Mole style={{ 'width': '100%' }} whacked={whacked} setVisible={setVisible}></Mole> : <MoleHill missed={missed} style={{ 'width': '100%' }} setVisible={setVisible}></MoleHill>}
+            {displayMole ? <Mole timeLeft={props.timeLeft} style={{ 'width': '100%' }} whacked={whacked} setVisible={setVisible}></Mole> : <MoleHill timeLeft={props.timeLeft} missed={missed} style={{ 'width': '100%' }} setVisible={setVisible}></MoleHill>}
         </div>
     )
 

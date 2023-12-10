@@ -4,15 +4,18 @@ const moleIMG = require('../mole.png')
 function Mole(props) {
 
     useEffect(() => {
-        let popDuration = Math.floor(Math.random() * 3000)
-        let timer = setTimeout(() => {
-            props.setVisible(false)
+        if (props.timeLeft) {
+            let popDuration = Math.floor(Math.random() * 3000)
+            let timer = setTimeout(() => {
+                props.setVisible(true)
+            }, popDuration)
+            return () => {
+                {/*don't forget to clean up! */ }
+                clearTimeout(timer)
+            }
         }
-            , popDuration)
-
-        return () => {
-            {/*don't forget to clean up! */ }
-            clearTimeout(timer)
+        else {
+            props.setVisible(false)
         }
     })
 
